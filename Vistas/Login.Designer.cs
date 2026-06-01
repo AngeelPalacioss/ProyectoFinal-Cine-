@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -36,17 +35,6 @@
             txtContraseña = new TextBox();
             btnIngresar = new Button();
             SuspendLayout();
-            // 
-            // materialLabel2
-            // 
-            materialLabel2.AutoSize = true;
-            materialLabel2.Depth = 0;
-            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(154, 185);
-            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel2.Name = "materialLabel2";
-            materialLabel2.Size = new Size(1, 0);
-            materialLabel2.TabIndex = 7;
             // 
             // label1
             // 
@@ -98,6 +86,7 @@
             btnIngresar.TabIndex = 13;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // Form1
             // 
@@ -111,7 +100,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(materialLabel2);
             Name = "Form1";
             Text = "Login";
             ResumeLayout(false);

@@ -29,72 +29,68 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            this.txtHoraFinalDesc = new TextBox();
-            this.btnCancelarDesc = new Button();
-            this.btnGuardarDesc = new Button();
+            txtPorcentajeDesc = new TextBox();
+            txtNombreDesc = new TextBox();
+            txtDiasDesc = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            this.txtHoraInicioDesc = new TextBox();
-            this.txtActivoDesc = new TextBox();
             dgvDescuentos = new DataGridView();
             label9 = new Label();
             label1 = new Label();
-            txtDiasDesc = new TextBox();
-            txtNombreDesc = new TextBox();
-            txtPorcentajeDesc = new TextBox();
+            txtHoraInicioDesc = new TextBox();
+            txtHoraFinalDesc = new TextBox();
+            txtActivoDesc = new TextBox();
+            btnGuardarDesc = new Button();
+            btnCancelarDesc = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnCancelarDesc);
+            panel1.Controls.Add(btnGuardarDesc);
+            panel1.Controls.Add(txtActivoDesc);
+            panel1.Controls.Add(txtHoraFinalDesc);
+            panel1.Controls.Add(txtHoraInicioDesc);
             panel1.Controls.Add(txtPorcentajeDesc);
             panel1.Controls.Add(txtNombreDesc);
             panel1.Controls.Add(txtDiasDesc);
-            panel1.Controls.Add(this.txtHoraFinalDesc);
-            panel1.Controls.Add(this.btnCancelarDesc);
-            panel1.Controls.Add(this.btnGuardarDesc);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(this.txtHoraInicioDesc);
-            panel1.Controls.Add(this.txtActivoDesc);
             panel1.Location = new Point(32, 290);
             panel1.Name = "panel1";
             panel1.Size = new Size(737, 269);
             panel1.TabIndex = 6;
             // 
-            // txtHoraFinalDesc
+            // txtPorcentajeDesc
             // 
-            this.txtHoraFinalDesc.Location = new Point(55, 151);
-            this.txtHoraFinalDesc.Name = "txtHoraFinalDesc";
-            this.txtHoraFinalDesc.Size = new Size(189, 23);
-            this.txtHoraFinalDesc.TabIndex = 19;
+            txtPorcentajeDesc.Location = new Point(468, 33);
+            txtPorcentajeDesc.Name = "txtPorcentajeDesc";
+            txtPorcentajeDesc.Size = new Size(189, 23);
+            txtPorcentajeDesc.TabIndex = 22;
             // 
-            // btnCancelarDesc
+            // txtNombreDesc
             // 
-            this.btnCancelarDesc.Location = new Point(370, 222);
-            this.btnCancelarDesc.Name = "btnCancelarDesc";
-            this.btnCancelarDesc.Size = new Size(75, 23);
-            this.btnCancelarDesc.TabIndex = 15;
-            this.btnCancelarDesc.Text = "Cancelar";
-            this.btnCancelarDesc.UseVisualStyleBackColor = true;
+            txtNombreDesc.Location = new Point(55, 33);
+            txtNombreDesc.Name = "txtNombreDesc";
+            txtNombreDesc.Size = new Size(189, 23);
+            txtNombreDesc.TabIndex = 21;
             // 
-            // btnGuardarDesc
+            // txtDiasDesc
             // 
-            this.btnGuardarDesc.Location = new Point(262, 222);
-            this.btnGuardarDesc.Name = "btnGuardarDesc";
-            this.btnGuardarDesc.Size = new Size(75, 23);
-            this.btnGuardarDesc.TabIndex = 14;
-            this.btnGuardarDesc.Text = "Guardar";
-            this.btnGuardarDesc.UseVisualStyleBackColor = true;
+            txtDiasDesc.Location = new Point(55, 91);
+            txtDiasDesc.Name = "txtDiasDesc";
+            txtDiasDesc.Size = new Size(189, 23);
+            txtDiasDesc.TabIndex = 20;
             // 
             // label7
             // 
@@ -151,20 +147,6 @@
             label2.Text = "Nombre del Descuento:";
             label2.Click += label2_Click;
             // 
-            // txtHoraInicioDesc
-            // 
-            this.txtHoraInicioDesc.Location = new Point(468, 91);
-            this.txtHoraInicioDesc.Name = "txtHoraInicioDesc";
-            this.txtHoraInicioDesc.Size = new Size(189, 23);
-            this.txtHoraInicioDesc.TabIndex = 3;
-            // 
-            // txtActivoDesc
-            // 
-            this.txtActivoDesc.Location = new Point(468, 151);
-            this.txtActivoDesc.Name = "txtActivoDesc";
-            this.txtActivoDesc.Size = new Size(189, 23);
-            this.txtActivoDesc.TabIndex = 1;
-            // 
             // dgvDescuentos
             // 
             dgvDescuentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -191,26 +173,44 @@
             label1.TabIndex = 21;
             label1.Text = "Descuentos";
             // 
-            // txtDiasDesc
+            // txtHoraInicioDesc
             // 
-            txtDiasDesc.Location = new Point(55, 91);
-            txtDiasDesc.Name = "txtDiasDesc";
-            txtDiasDesc.Size = new Size(189, 23);
-            txtDiasDesc.TabIndex = 20;
+            txtHoraInicioDesc.Location = new Point(468, 91);
+            txtHoraInicioDesc.Name = "txtHoraInicioDesc";
+            txtHoraInicioDesc.Size = new Size(189, 23);
+            txtHoraInicioDesc.TabIndex = 23;
             // 
-            // txtNombreDesc
+            // txtHoraFinalDesc
             // 
-            txtNombreDesc.Location = new Point(55, 33);
-            txtNombreDesc.Name = "txtNombreDesc";
-            txtNombreDesc.Size = new Size(189, 23);
-            txtNombreDesc.TabIndex = 21;
+            txtHoraFinalDesc.Location = new Point(55, 148);
+            txtHoraFinalDesc.Name = "txtHoraFinalDesc";
+            txtHoraFinalDesc.Size = new Size(189, 23);
+            txtHoraFinalDesc.TabIndex = 24;
             // 
-            // txtPorcentajeDesc
+            // txtActivoDesc
             // 
-            txtPorcentajeDesc.Location = new Point(468, 33);
-            txtPorcentajeDesc.Name = "txtPorcentajeDesc";
-            txtPorcentajeDesc.Size = new Size(189, 23);
-            txtPorcentajeDesc.TabIndex = 22;
+            txtActivoDesc.Location = new Point(468, 148);
+            txtActivoDesc.Name = "txtActivoDesc";
+            txtActivoDesc.Size = new Size(189, 23);
+            txtActivoDesc.TabIndex = 25;
+            // 
+            // btnGuardarDesc
+            // 
+            btnGuardarDesc.Location = new Point(259, 216);
+            btnGuardarDesc.Name = "btnGuardarDesc";
+            btnGuardarDesc.Size = new Size(75, 23);
+            btnGuardarDesc.TabIndex = 26;
+            btnGuardarDesc.Text = "Guardar";
+            btnGuardarDesc.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelarDesc
+            // 
+            btnCancelarDesc.Location = new Point(375, 216);
+            btnCancelarDesc.Name = "btnCancelarDesc";
+            btnCancelarDesc.Size = new Size(75, 23);
+            btnCancelarDesc.TabIndex = 27;
+            btnCancelarDesc.Text = "Cancelar";
+            btnCancelarDesc.UseVisualStyleBackColor = true;
             // 
             // Descuentos
             // 
@@ -252,5 +252,10 @@
         private TextBox txtNombreDesc;
         private TextBox txtDiasDesc;
         private Label label1;
+        private TextBox txtHoraFinalDesc;
+        private TextBox txtHoraInicioDesc;
+        private Button btnCancelarDesc;
+        private Button btnGuardarDesc;
+        private TextBox txtActivoDesc;
     }
 }
