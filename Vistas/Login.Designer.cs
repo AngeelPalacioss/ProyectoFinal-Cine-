@@ -107,7 +107,6 @@
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private Label label1;
         private Label label2;
         private Label label3;

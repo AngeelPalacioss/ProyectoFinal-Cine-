@@ -19,6 +19,8 @@ namespace ProyectoFinal.Vistas
         private decimal _precioBase = 0;
         private int? _descIdAplicado = null;
         private decimal _descPct = 0;
+        private decimal _descPctDia = 0;  // descuento automatico por dia/hora
+        private bool _cargando = false; // agrega junto a las otras variables
 
         public Ventas()
         {
@@ -40,9 +42,7 @@ namespace ProyectoFinal.Vistas
             cbTipoBoleto.Items.AddRange(new[] { "Normal", "Estudiante", "Tercera edad" });
             cbTipoBoleto.SelectedIndex = 0;
 
-            // Cargar peliculas en combobox de referencia (no funcional, solo visual)
             cbPeliculaSelec.Enabled = false;
-
             txtDescuentoAplic.Enabled = false;
             txtTotal.Enabled = false;
             txtPrecioBase.Enabled = false;
@@ -65,6 +65,8 @@ namespace ProyectoFinal.Vistas
         private void DgvVentas_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvVentas.CurrentRow == null) return;
+            _cargando = true; // bloquear recalculo mientras cargamos
+
             var fila = dgvVentas.CurrentRow;
 
             _funcIdSeleccionada = Convert.ToInt32(fila.Cells["func_id"].Value);
@@ -74,30 +76,31 @@ namespace ProyectoFinal.Vistas
             txtPrecioBase.Text = _precioBase.ToString("F2");
             cbPeliculaSelec.Text = fila.Cells["titulo"].Value?.ToString() ?? "";
 
-            // Calcular descuento automatico por dia/hora
             var dtDesc = _descDAL.ObtenerDescuentoAplicable(dateTimePicker1.Value, horaInicio);
             if (dtDesc.Rows.Count > 0)
             {
                 _descIdAplicado = Convert.ToInt32(dtDesc.Rows[0]["desc_id"]);
-                _descPct = Convert.ToDecimal(dtDesc.Rows[0]["porcentaje"]);
-                txtDescuentoAplic.Text = $"{dtDesc.Rows[0]["nombre"]} ({_descPct}%)";
+                _descPctDia = Convert.ToDecimal(dtDesc.Rows[0]["porcentaje"]);
+                txtDescuentoAplic.Text = $"{dtDesc.Rows[0]["nombre"]} ({_descPctDia}%)";
             }
             else
             {
                 _descIdAplicado = null;
-                _descPct = 0;
+                _descPctDia = 0;
                 txtDescuentoAplic.Text = "Sin descuento";
             }
 
-            RecalcularTotal(null, EventArgs.Empty);
+            cbTipoBoleto.SelectedIndex = 0;
+            _cargando = false; // desbloquear
+            RecalcularTotal(null, EventArgs.Empty); // recalcular una sola vez con todo listo
         }
 
         private void RecalcularTotal(object? sender, EventArgs e)
         {
+            if (_cargando) return;
             if (_precioBase == 0) return;
             if (!int.TryParse(txtCantBoletos.Text, out int cant) || cant <= 0) return;
 
-            // Descuento adicional por tipo de boleto
             decimal descTipo = cbTipoBoleto.Text switch
             {
                 "Estudiante" => 25m,
@@ -105,10 +108,13 @@ namespace ProyectoFinal.Vistas
                 _ => 0m
             };
 
-            decimal descFinal = Math.Max(_descPct, descTipo);
-            decimal total = cant * _precioBase * (1 - descFinal / 100);
+            // Calcular con variable local, no tocar _descPct aqui
+            decimal descAplicar = Math.Max(_descPctDia, descTipo);
+            decimal total = cant * _precioBase * (1 - descAplicar / 100);
             txtTotal.Text = total.ToString("F2");
-            _descPct = descFinal;
+
+            // Solo actualizar _descPct para cuando se confirme la venta
+            _descPct = descAplicar;
         }
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
@@ -158,6 +164,7 @@ namespace ProyectoFinal.Vistas
             _precioBase = 0;
             _descIdAplicado = null;
             _descPct = 0;
+            _descPctDia = 0;
             txtPrecioBase.Clear();
             txtCantBoletos.Clear();
             txtDescuentoAplic.Clear();

@@ -28,6 +28,9 @@ namespace ProyectoFinal
                 return;
             }
 
+
+            
+            
             bool ok = _loginDAL.Autenticar(txtUsuario.Text.Trim(),
                                            txtContraseña.Text.Trim(),
                                            out string mensaje);
