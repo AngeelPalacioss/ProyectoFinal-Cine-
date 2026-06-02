@@ -20,7 +20,7 @@ namespace ProyectoFinal.Vistas
         private int? _descIdAplicado = null;
         private decimal _descPct = 0;
         private decimal _descPctDia = 0;  // descuento automatico por dia/hora
-        private bool _cargando = false; // agrega junto a las otras variables
+        private bool _cargando = false; 
 
         public Ventas()
         {
@@ -66,7 +66,7 @@ namespace ProyectoFinal.Vistas
         private void DgvVentas_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvVentas.CurrentRow == null) return;
-            _cargando = true; // bloquear recalculo mientras cargamos
+            _cargando = true; 
 
             var fila = dgvVentas.CurrentRow;
 
@@ -92,8 +92,8 @@ namespace ProyectoFinal.Vistas
             }
 
             cbTipoBoleto.SelectedIndex = 0;
-            _cargando = false; // desbloquear
-            RecalcularTotal(null, EventArgs.Empty); // recalcular una sola vez con todo listo
+            _cargando = false; 
+            RecalcularTotal(null, EventArgs.Empty);
         }
 
         private void RecalcularTotal(object? sender, EventArgs e)
@@ -109,12 +109,10 @@ namespace ProyectoFinal.Vistas
                 _ => 0m
             };
 
-            // Calcular con variable local, no tocar _descPct aqui
             decimal descAplicar = Math.Max(_descPctDia, descTipo);
             decimal total = cant * _precioBase * (1 - descAplicar / 100);
             txtTotal.Text = total.ToString("F2");
 
-            // Solo actualizar _descPct para cuando se confirme la venta
             _descPct = descAplicar;
         }
 

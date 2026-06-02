@@ -6,9 +6,7 @@ using System.Text;
 
 namespace ProyectoFinal.DAL
 {
-    // =================================================================
-    // SESION GLOBAL - guarda el usuario logueado en memoria
-    // =================================================================
+    //GUARDA EL USUARIO QUE INICIO SESION EN MEMORIA
     public static class SesionGlobal
     {
         public static int    UsuId      { get; set; }
@@ -35,9 +33,7 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // LOGIN DAL
-    // =================================================================
+    //OCURRE EL LOGIN DAL
     public class LoginDAL
     {
         private readonly Conexion _db = Conexion.Instancia;
@@ -124,9 +120,6 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // PELICULAS DAL
-    // =================================================================
     public class PeliculasDAL
     {
         private readonly Conexion _db = Conexion.Instancia;
@@ -224,9 +217,6 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // SALAS DAL
-    // =================================================================
     public class SalasDAL
     {
         private readonly Conexion _db = Conexion.Instancia;
@@ -296,9 +286,7 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // FUNCIONES DAL
-    // =================================================================
+
     public class FuncionesDAL
     {
         private readonly Conexion _db = Conexion.Instancia;
@@ -399,9 +387,7 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // DESCUENTOS DAL
-    // =================================================================
+
     public class DescuentosDAL
     {
         private readonly Conexion _db = Conexion.Instancia;
@@ -507,9 +493,6 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // VENTAS DAL
-    // =================================================================
     public class VentasDAL
     {
         private readonly Conexion _db = Conexion.Instancia;
@@ -589,9 +572,7 @@ namespace ProyectoFinal.DAL
         }
     }
 
-    // =================================================================
-    // REPORTES DAL
-    // =================================================================
+
     public class ReportesDAL
     {
         private readonly Conexion _db = Conexion.Instancia;

@@ -23,7 +23,6 @@ namespace ProyectoFinal.Vistas
             btnBuscar.Click += (s, e) => CargarGrid(txtBuscar.Text.Trim());
             btnGuardarPeli.Click += BtnGuardar_Click;
             btnCancelarPeli.Click += (s, e) => LimpiarFormulario();
-            // Enter en busqueda
             txtBuscar.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) CargarGrid(txtBuscar.Text.Trim()); };
 
             Estilos.AplicarForm(this);

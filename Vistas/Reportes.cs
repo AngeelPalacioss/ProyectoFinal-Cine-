@@ -33,7 +33,6 @@ namespace ProyectoFinal.Vistas
 
         private void ConstruirTabs()
         {
-            // Limpiar tabs existentes del Designer y crear 7
             tabControl1.TabPages.Clear();
 
             AgregarTab("R1: Cartelera", dgv1, CrearPanelR1());
@@ -97,7 +96,6 @@ namespace ProyectoFinal.Vistas
             return panel;
         }
 
-        // Panel generico con boton Ejecutar
         private Panel CrearPanelSimple(DataGridView dgv, Func<System.Data.DataTable> consulta)
         {
             var panel = new Panel { Dock = DockStyle.Fill };

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ProyectoFinal.DAL;
@@ -21,14 +22,13 @@ namespace ProyectoFinal.Vistas
         {
             InitializeComponent();
             this.Load += Funciones_Load;
-            dgvFunciones.SelectionChanged += DgvFunciones_SelectionChanged;
+            // Doble clic carga para editar
+            dgvFunciones.CellDoubleClick += DgvFunciones_DoubleClick;
             btnFiltrarFecha.Click += (s, e) => CargarGrid();
             btnGuardarFuncion.Click += BtnGuardar_Click;
             btnCancelarFuncion.Click += (s, e) => LimpiarFormulario();
-            // Calcular hora fin automaticamente al cambiar hora inicio
             txtHoraInicio.Leave += CalcularHoraFin;
             cbPeliculas.SelectedIndexChanged += CalcularHoraFin;
-
             Estilos.AplicarForm(this);
         }
 
@@ -88,10 +88,10 @@ namespace ProyectoFinal.Vistas
             catch { }
         }
 
-        private void DgvFunciones_SelectionChanged(object sender, EventArgs e)
+        private void DgvFunciones_DoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvFunciones.CurrentRow == null) return;
-            var fila = dgvFunciones.CurrentRow;
+            if (e.RowIndex < 0) return;
+            var fila = dgvFunciones.Rows[e.RowIndex];
 
             _funcIdSeleccionada = Convert.ToInt32(fila.Cells["func_id"].Value);
             txtHoraInicio.Text = fila.Cells["hora_inicio"].Value?.ToString() ?? "";
@@ -109,7 +109,10 @@ namespace ProyectoFinal.Vistas
                 return;
             }
 
-            if (!decimal.TryParse(txtCosto.Text, out decimal precio) || precio <= 0)
+            if (!decimal.TryParse(txtCosto.Text.Trim(),
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture,
+                out decimal precio) || precio <= 0)
             {
                 MessageBox.Show("Precio invalido.", "Validacion",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -134,8 +137,9 @@ namespace ProyectoFinal.Vistas
             {
                 MessageBox.Show("Guardado correctamente.", "Exito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarFormulario();
-                CargarGrid();
+
+                LimpiarFormulario(); 
+                CargarGrid();      
             }
             else
             {
@@ -154,7 +158,6 @@ namespace ProyectoFinal.Vistas
             dgvFunciones.ClearSelection();
         }
 
-        // Eventos requeridos por el Designer
         private void btnGuardarPeli_Click(object sender, EventArgs e) => BtnGuardar_Click(sender, e);
         private void btnCancelarPeli_Click(object sender, EventArgs e) => LimpiarFormulario();
         private void label8_Click(object sender, EventArgs e) { }
