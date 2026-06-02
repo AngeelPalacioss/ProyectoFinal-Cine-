@@ -19,7 +19,20 @@ namespace ProyectoFinal.Vistas
         {
             InitializeComponent();
             this.Load += Peliculas_Load;
-            dgvPeliculas.SelectionChanged += DgvPeliculas_SelectionChanged;
+            dgvPeliculas.CellDoubleClick += (s, e) =>
+            {
+                if (e.RowIndex < 0) return;
+                var fila = dgvPeliculas.Rows[e.RowIndex];
+                _pelIdSeleccionada = Convert.ToInt32(fila.Cells["pel_id"].Value);
+                txtNombrePeli.Text = fila.Cells["titulo"].Value?.ToString() ?? "";
+                txtFGeneroPeli.Text = fila.Cells["genero"].Value?.ToString() ?? "";
+                txtDirectorPeli.Text = fila.Cells["director"].Value?.ToString() ?? "";
+                txtClasificacionPeli.Text = fila.Cells["clasificacion"].Value?.ToString() ?? "";
+                txtDuracionPeli.Text = fila.Cells["duracion_min"].Value?.ToString() ?? "";
+                if (fila.Cells["fecha_estreno"].Value != DBNull.Value &&
+                    fila.Cells["fecha_estreno"].Value != null)
+                    dtpFechaEstreno.Value = Convert.ToDateTime(fila.Cells["fecha_estreno"].Value);
+            };
             btnBuscar.Click += (s, e) => CargarGrid(txtBuscar.Text.Trim());
             btnGuardarPeli.Click += BtnGuardar_Click;
             btnCancelarPeli.Click += (s, e) => LimpiarFormulario();
@@ -48,6 +61,7 @@ namespace ProyectoFinal.Vistas
             dgvPeliculas.DataSource = _dal.ObtenerTodas(filtro);
         }
 
+        /*
         private void DgvPeliculas_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvPeliculas.CurrentRow == null) return;
@@ -64,7 +78,7 @@ namespace ProyectoFinal.Vistas
             if (fila.Cells["fecha_estreno"].Value != DBNull.Value &&
                 fila.Cells["fecha_estreno"].Value != null)
                 dtpFechaEstreno.Value = Convert.ToDateTime(fila.Cells["fecha_estreno"].Value);
-        }
+        }*/
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {

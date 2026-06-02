@@ -19,7 +19,18 @@ namespace ProyectoFinal.Vistas
         {
             InitializeComponent();
             this.Load += Descuentos_Load;
-            dgvDescuentos.SelectionChanged += DgvDescuentos_SelectionChanged;
+            dgvDescuentos.CellDoubleClick += (s, e) =>
+            {
+                if (e.RowIndex < 0) return;
+                var fila = dgvDescuentos.Rows[e.RowIndex];
+                _descIdSeleccionado = Convert.ToInt32(fila.Cells["desc_id"].Value);
+                txtNombreDesc.Text = fila.Cells["nombre"].Value?.ToString() ?? "";
+                txtPorcentajeDesc.Text = fila.Cells["porcentaje"].Value?.ToString() ?? "";
+                txtDiasDesc.Text = fila.Cells["dia_semana"].Value?.ToString() ?? "";
+                txtHoraInicioDesc.Text = fila.Cells["hora_inicio"].Value?.ToString() ?? "";
+                txtHoraFinalDesc.Text = fila.Cells["hora_fin"].Value?.ToString() ?? "";
+                txtActivoDesc.Text = fila.Cells["activo"].Value?.ToString() ?? "";
+            };
             btnGuardarDesc.Click += BtnGuardar_Click;
             btnCancelarDesc.Click += (s, e) => LimpiarFormulario();
 
@@ -46,6 +57,7 @@ namespace ProyectoFinal.Vistas
             dgvDescuentos.DataSource = _dal.ObtenerTodos();
         }
 
+        /*
         private void DgvDescuentos_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvDescuentos.CurrentRow == null) return;
@@ -58,7 +70,7 @@ namespace ProyectoFinal.Vistas
             txtHoraInicioDesc.Text = fila.Cells["hora_inicio"].Value?.ToString() ?? "";
             txtHoraFinalDesc.Text = fila.Cells["hora_fin"].Value?.ToString() ?? "";
             txtActivoDesc.Text = fila.Cells["activo"].Value?.ToString() ?? "";
-        }
+        }*/
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {

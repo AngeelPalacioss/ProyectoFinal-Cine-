@@ -94,9 +94,9 @@ namespace ProyectoFinal.Vistas
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            _loginDAL.CerrarSesion();
-            Application.Exit();
             base.OnFormClosing(e);
+            if (!e.Cancel)
+                _loginDAL.CerrarSesion();
         }
     }
 }

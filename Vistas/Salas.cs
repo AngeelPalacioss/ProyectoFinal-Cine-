@@ -19,7 +19,15 @@ namespace ProyectoFinal.Vistas
         {
             InitializeComponent();
             this.Load += Salas_Load;
-            dgvSalas.SelectionChanged += DgvSalas_SelectionChanged;
+            dgvSalas.CellDoubleClick += (s, e) =>
+            {
+                if (e.RowIndex < 0) return;
+                var fila = dgvSalas.Rows[e.RowIndex];
+                _salaIdSeleccionada = Convert.ToInt32(fila.Cells["sala_id"].Value);
+                txtNombSala.Text = fila.Cells["nombre"].Value?.ToString() ?? "";
+                txtCapacidadSala.Text = fila.Cells["capacidad"].Value?.ToString() ?? "";
+                txtTipoSala.Text = fila.Cells["tipo"].Value?.ToString() ?? "";
+            };
             btnGuardarSala.Click += BtnGuardar_Click;
             btnCancelarSala.Click += (s, e) => LimpiarFormulario();
             Estilos.AplicarForm(this);
@@ -44,7 +52,7 @@ namespace ProyectoFinal.Vistas
         {
             dgvSalas.DataSource = _dal.ObtenerTodas();
         }
-
+        /*
         private void DgvSalas_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvSalas.CurrentRow == null) return;
@@ -54,7 +62,7 @@ namespace ProyectoFinal.Vistas
             txtNombSala.Text = fila.Cells["nombre"].Value?.ToString() ?? "";
             txtCapacidadSala.Text = fila.Cells["capacidad"].Value?.ToString() ?? "";
             txtTipoSala.Text = fila.Cells["tipo"].Value?.ToString() ?? "";
-        }
+        }*/
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
