@@ -22,6 +22,8 @@ namespace ProyectoFinal.Vistas
             {
                 if (e.KeyCode == Keys.Enter) CargarGrid();
             };
+
+            Estilos.AplicarForm(this);
         }
 
         private void Historial_Load(object sender, EventArgs e)

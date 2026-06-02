@@ -27,8 +27,15 @@ namespace ProyectoFinal.Vistas
             ventasToolStripMenuItem.Click += (s, e) => AbrirVentana(new Ventas());
             reportesToolStripMenuItem.Click += (s, e) => AbrirVentana(new Reportes());
             usuariosToolStripMenuItem.Click += (s, e) =>
-                MessageBox.Show("Modulo de usuarios en construccion.", "Info",
+            {
+                string info = $"Usuarios del sistema:\n\n" +
+                              $"• admin — Administrador (todos los permisos)\n" +
+                              $"• cajero1, cajero2 — Taquilla (ventas)\n" +
+                              $"• consulta1, consulta2 — Solo lectura\n\n" +
+                              $"Para gestionar usuarios conectate como SYSTEM en Oracle SQL Developer.";
+                MessageBox.Show(info, "Gestion de Usuarios",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)

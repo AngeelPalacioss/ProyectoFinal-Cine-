@@ -28,6 +28,8 @@ namespace ProyectoFinal.Vistas
             // Calcular hora fin automaticamente al cambiar hora inicio
             txtHoraInicio.Leave += CalcularHoraFin;
             cbPeliculas.SelectedIndexChanged += CalcularHoraFin;
+
+            Estilos.AplicarForm(this);
         }
 
         private void Funciones_Load(object sender, EventArgs e)

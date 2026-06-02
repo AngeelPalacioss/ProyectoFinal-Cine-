@@ -22,6 +22,8 @@ namespace ProyectoFinal.Vistas
             dgvDescuentos.SelectionChanged += DgvDescuentos_SelectionChanged;
             btnGuardarDesc.Click += BtnGuardar_Click;
             btnCancelarDesc.Click += (s, e) => LimpiarFormulario();
+
+            Estilos.AplicarForm(this);
         }
 
         private void Descuentos_Load(object sender, EventArgs e)

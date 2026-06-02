@@ -33,6 +33,7 @@ namespace ProyectoFinal.Vistas
             btnCancelarVenta.Click += (s, e) => LimpiarFormulario();
             cbTipoBoleto.SelectedIndexChanged += RecalcularTotal;
             txtCantBoletos.TextChanged += RecalcularTotal;
+            Estilos.AplicarForm(this);
         }
 
         private void Ventas_Load(object sender, EventArgs e)

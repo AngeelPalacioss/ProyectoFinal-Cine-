@@ -21,11 +21,14 @@ namespace ProyectoFinal.Vistas
         {
             InitializeComponent();
             this.Load += Reportes_Load;
+
+            Estilos.AplicarForm(this);
         }
 
         private void Reportes_Load(object sender, EventArgs e)
         {
             ConstruirTabs();
+            Estilos.AplicarForm(this);
         }
 
         private void ConstruirTabs()

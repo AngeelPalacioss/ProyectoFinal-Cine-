@@ -14,6 +14,8 @@ namespace ProyectoFinal
             // Enter en cualquier campo dispara login
             txtUsuario.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) Ingresar(); };
             txtContraseña.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) Ingresar(); };
+
+            Estilos.AplicarForm(this);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e) => Ingresar();

@@ -22,6 +22,7 @@ namespace ProyectoFinal.Vistas
             dgvSalas.SelectionChanged += DgvSalas_SelectionChanged;
             btnGuardarSala.Click += BtnGuardar_Click;
             btnCancelarSala.Click += (s, e) => LimpiarFormulario();
+            Estilos.AplicarForm(this);
         }
 
         private void Salas_Load(object sender, EventArgs e)

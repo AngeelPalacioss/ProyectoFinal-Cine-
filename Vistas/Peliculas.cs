@@ -25,6 +25,8 @@ namespace ProyectoFinal.Vistas
             btnCancelarPeli.Click += (s, e) => LimpiarFormulario();
             // Enter en busqueda
             txtBuscar.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) CargarGrid(txtBuscar.Text.Trim()); };
+
+            Estilos.AplicarForm(this);
         }
 
         private void Peliculas_Load(object sender, EventArgs e)

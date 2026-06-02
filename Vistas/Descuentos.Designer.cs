@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnCancelarDesc = new Button();
+            btnGuardarDesc = new Button();
+            txtActivoDesc = new TextBox();
+            txtHoraFinalDesc = new TextBox();
+            txtHoraInicioDesc = new TextBox();
             txtPorcentajeDesc = new TextBox();
             txtNombreDesc = new TextBox();
             txtDiasDesc = new TextBox();
@@ -41,11 +46,6 @@
             dgvDescuentos = new DataGridView();
             label9 = new Label();
             label1 = new Label();
-            txtHoraInicioDesc = new TextBox();
-            txtHoraFinalDesc = new TextBox();
-            txtActivoDesc = new TextBox();
-            btnGuardarDesc = new Button();
-            btnCancelarDesc = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).BeginInit();
             SuspendLayout();
@@ -70,6 +70,45 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(737, 269);
             panel1.TabIndex = 6;
+            // 
+            // btnCancelarDesc
+            // 
+            btnCancelarDesc.Location = new Point(375, 216);
+            btnCancelarDesc.Name = "btnCancelarDesc";
+            btnCancelarDesc.Size = new Size(75, 23);
+            btnCancelarDesc.TabIndex = 27;
+            btnCancelarDesc.Text = "Cancelar";
+            btnCancelarDesc.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarDesc
+            // 
+            btnGuardarDesc.Location = new Point(259, 216);
+            btnGuardarDesc.Name = "btnGuardarDesc";
+            btnGuardarDesc.Size = new Size(75, 23);
+            btnGuardarDesc.TabIndex = 26;
+            btnGuardarDesc.Text = "Confirmar";
+            btnGuardarDesc.UseVisualStyleBackColor = true;
+            // 
+            // txtActivoDesc
+            // 
+            txtActivoDesc.Location = new Point(468, 148);
+            txtActivoDesc.Name = "txtActivoDesc";
+            txtActivoDesc.Size = new Size(189, 23);
+            txtActivoDesc.TabIndex = 25;
+            // 
+            // txtHoraFinalDesc
+            // 
+            txtHoraFinalDesc.Location = new Point(55, 148);
+            txtHoraFinalDesc.Name = "txtHoraFinalDesc";
+            txtHoraFinalDesc.Size = new Size(189, 23);
+            txtHoraFinalDesc.TabIndex = 24;
+            // 
+            // txtHoraInicioDesc
+            // 
+            txtHoraInicioDesc.Location = new Point(468, 91);
+            txtHoraInicioDesc.Name = "txtHoraInicioDesc";
+            txtHoraInicioDesc.Size = new Size(189, 23);
+            txtHoraInicioDesc.TabIndex = 23;
             // 
             // txtPorcentajeDesc
             // 
@@ -172,45 +211,6 @@
             label1.Size = new Size(68, 15);
             label1.TabIndex = 21;
             label1.Text = "Descuentos";
-            // 
-            // txtHoraInicioDesc
-            // 
-            txtHoraInicioDesc.Location = new Point(468, 91);
-            txtHoraInicioDesc.Name = "txtHoraInicioDesc";
-            txtHoraInicioDesc.Size = new Size(189, 23);
-            txtHoraInicioDesc.TabIndex = 23;
-            // 
-            // txtHoraFinalDesc
-            // 
-            txtHoraFinalDesc.Location = new Point(55, 148);
-            txtHoraFinalDesc.Name = "txtHoraFinalDesc";
-            txtHoraFinalDesc.Size = new Size(189, 23);
-            txtHoraFinalDesc.TabIndex = 24;
-            // 
-            // txtActivoDesc
-            // 
-            txtActivoDesc.Location = new Point(468, 148);
-            txtActivoDesc.Name = "txtActivoDesc";
-            txtActivoDesc.Size = new Size(189, 23);
-            txtActivoDesc.TabIndex = 25;
-            // 
-            // btnGuardarDesc
-            // 
-            btnGuardarDesc.Location = new Point(259, 216);
-            btnGuardarDesc.Name = "btnGuardarDesc";
-            btnGuardarDesc.Size = new Size(75, 23);
-            btnGuardarDesc.TabIndex = 26;
-            btnGuardarDesc.Text = "Guardar";
-            btnGuardarDesc.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelarDesc
-            // 
-            btnCancelarDesc.Location = new Point(375, 216);
-            btnCancelarDesc.Name = "btnCancelarDesc";
-            btnCancelarDesc.Size = new Size(75, 23);
-            btnCancelarDesc.TabIndex = 27;
-            btnCancelarDesc.Text = "Cancelar";
-            btnCancelarDesc.UseVisualStyleBackColor = true;
             // 
             // Descuentos
             // 
