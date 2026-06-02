@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             txtUsuario = new TextBox();
             txtContraseña = new TextBox();
             btnIngresar = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -80,7 +83,7 @@
             // 
             // btnIngresar
             // 
-            btnIngresar.Location = new Point(113, 387);
+            btnIngresar.Location = new Point(109, 387);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(75, 23);
             btnIngresar.TabIndex = 13;
@@ -88,12 +91,22 @@
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnIngresar_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(79, 23);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(132, 129);
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(305, 434);
+            Controls.Add(pictureBox1);
             Controls.Add(btnIngresar);
             Controls.Add(txtContraseña);
             Controls.Add(txtUsuario);
@@ -102,6 +115,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,5 +127,6 @@
         private TextBox txtUsuario;
         private TextBox txtContraseña;
         private Button btnIngresar;
+        private PictureBox pictureBox1;
     }
 }

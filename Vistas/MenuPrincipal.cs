@@ -45,6 +45,30 @@ namespace ProyectoFinal.Vistas
             // NOTA: Cambia Program.cs para que abra Form1 (Login) en lugar de MenuPrincipal.
             AplicarPermisosPorRol();
             this.Text = $"CineSystem — {SesionGlobal.Nombre} [{SesionGlobal.Rol}]";
+            CargarEstadisticas();
+        }
+
+        private void CargarEstadisticas()
+        {
+            try
+            {
+                var db = Conexion.Instancia;
+
+                var dtFunciones = db.EjecutarConsulta(
+                    "SELECT COUNT(*) AS total FROM FUNCIONES WHERE TRUNC(fecha) = TRUNC(SYSDATE) AND estado = 'Activa'");
+                var dtBoletos = db.EjecutarConsulta(
+                    "SELECT NVL(SUM(cantidad),0) AS total FROM BOLETOS WHERE TRUNC(fecha_venta) = TRUNC(SYSDATE)");
+                var dtIngresos = db.EjecutarConsulta(
+                    "SELECT NVL(SUM(total_pagado),0) AS total FROM BOLETOS WHERE TRUNC(fecha_venta) = TRUNC(SYSDATE)");
+
+                // Actualiza labels que agregues en el Designer
+                lblFunciones.Text = $"Funciones hoy: {dtFunciones.Rows[0]["total"]}";
+                lblBoletos.Text = $"Boletos vendidos: {dtBoletos.Rows[0]["total"]}";
+                lblIngresos.Text = $"Ingresos del dia: ${dtIngresos.Rows[0]["total"]:F2}";
+                lblUsuario.Text = $"Bienvenido, {SesionGlobal.Nombre}";
+                lblFecha.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
+            }
+            catch { }
         }
 
         private void AplicarPermisosPorRol()
